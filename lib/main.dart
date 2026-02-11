@@ -1,5 +1,6 @@
+
 import 'package:flutter/material.dart';
-import 'theme/theme.dart';
+import '../../widgets/navigation/test_screen.dart'; 
 
 void main() {
   runApp(const MyApp());
@@ -11,8 +12,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: appTheme,
+      title: 'BlaBlaCar Clone',
+      theme: ThemeData(
+        primaryColor: const Color(0xFF00AAE4),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          elevation: 0,
+        ),
+      ),
+      home: const BlaButtonTestScreen(), // Change to test BlaButton
+      // home: const RidePrefScreen(), // Original home
     );
   }
 }
