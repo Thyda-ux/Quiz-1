@@ -28,14 +28,18 @@ class _RidePrefScreenState extends State<RidePrefScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        // 1 - Background  Image
-        _buildBackground(),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            // 1 - Background Image
+            _buildBackground(),
 
-        // 2 - Foreground content
-        _buildForeground(),
-      ],
+            // 2 - Foreground content
+            _buildForeground(),
+          ],
+        ),
+      ),
     );
   }
 
@@ -45,7 +49,7 @@ class _RidePrefScreenState extends State<RidePrefScreen> {
       height: 340,
       child: Image.asset(
         blablaHomeImagePath,
-        fit: BoxFit.cover, // Adjust image fit to cover the container
+        fit: BoxFit.cover,
       ),
     );
   }
@@ -58,33 +62,39 @@ class _RidePrefScreenState extends State<RidePrefScreen> {
           "Your pick of rides at low price",
           style: BlaTextStyles.heading.copyWith(color: Colors.white),
         ),
-        SizedBox(height: 100),
+        // push the white card below the header image
+        SizedBox(height: 240),
         Container(
           margin: EdgeInsets.symmetric(horizontal: BlaSpacings.xxl),
           decoration: BoxDecoration(
-            color: Colors.white, // White background
-            borderRadius: BorderRadius.circular(16), // Rounded corners
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // 2.1 Display the Form to input the ride preferences
-              RidePrefForm(initRidePref:  RidePrefsService.currentRidePref),
+              RidePrefForm(
+                initRidePref: RidePrefsService.currentRidePref,
+                onSearch: (RidePref ridePref) {
+                  onRidePrefSelected(ridePref);
+                },
+              ),
               SizedBox(height: BlaSpacings.m),
 
               // 2.2 Optionally display a list of past preferences
               SizedBox(
-                height: 200, // Set a fixed height
+                height: 200,
                 child: ListView.builder(
-                  shrinkWrap: true, // Fix ListView height issue
+                  shrinkWrap: true,
                   physics: AlwaysScrollableScrollPhysics(),
-                  itemCount:  RidePrefsService.ridePrefsHistory.length,
+                  itemCount: RidePrefsService.ridePrefsHistory?.length ?? 0,
                   itemBuilder: (ctx, index) => RidePrefHistoryTile(
-                    ridePref:  RidePrefsService.ridePrefsHistory[index],
+                    ridePref: RidePrefsService.ridePrefsHistory[index],
                     onTap: () {
                       onRidePrefSelected(
-                         RidePrefsService.ridePrefsHistory[index],
+                        RidePrefsService.ridePrefsHistory[index],
                       );
                     },
                   ),
