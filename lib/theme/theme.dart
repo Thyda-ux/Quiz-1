@@ -46,22 +46,49 @@ class BlaColors {
 /// Definition of App text styles.
 ///
 class BlaTextStyles {
-  static TextStyle heading = TextStyle(fontSize: 28, fontWeight: FontWeight.w500);
+  static TextStyle heading = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w500,
+    color: BlaColors.textNormal,
+  );
 
-  static TextStyle body =  TextStyle(fontSize: 16, fontWeight: FontWeight.w400);
+  static TextStyle title = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+    color: BlaColors.textNormal,
+  );
 
-  static TextStyle label =  TextStyle(fontSize: 13, fontWeight: FontWeight.w400);
+  static TextStyle body = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: BlaColors.textNormal,
+  );
 
-  static TextStyle button =  TextStyle(fontSize: 14, fontWeight: FontWeight.w500);
+  static TextStyle bodySmall = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: BlaColors.textLight,
+  );
+
+  static TextStyle label = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w400,
+    color: BlaColors.textLight,
+  );
+
+  static TextStyle button = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
 }
-
-
 
 ///
 /// Definition of App spacings, in pixels.
 /// Bascially small (S), medium (m), large (l), extra large (x), extra extra large (xxl)
 ///
 class BlaSpacings {
+  static const double xs = 8;
   static const double s = 12;
   static const double m = 16; 
   static const double l = 24; 
@@ -69,16 +96,20 @@ class BlaSpacings {
   static const double xxl = 40; 
 
   static const double radius = 16; 
-  static const double radiusLarge = 24; 
+  static const double radiusLarge = 24;
 }
-
-
 
 ///
 /// Definition of App Theme.
 ///
-ThemeData appTheme =  ThemeData(
+ThemeData appTheme = ThemeData(
   fontFamily: 'Eesti',
   scaffoldBackgroundColor: Colors.white,
+  primaryColor: BlaColors.primary,
+  appBarTheme: AppBarTheme(
+    backgroundColor: Colors.white,
+    foregroundColor: Colors.black87,
+    elevation: 0,
+    titleTextStyle: BlaTextStyles.title,
+  ),
 );
- 

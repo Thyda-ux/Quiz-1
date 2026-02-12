@@ -2,13 +2,14 @@
 /// Enumation of available BlaBlaCar countries
 ///
 enum Country {
-  france('France'),
-  uk('United Kingdom'),
-  spain('Spain');
+  france('France', code: 'FR'),
+  uk('United Kingdom', code: 'UK'),
+  spain('Spain', code: 'ES');
 
   final String name;
+  final String code;
 
-  const Country(this.name);
+  const Country(this.name, {required this.code});
 }
 
 ///

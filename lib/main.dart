@@ -7,6 +7,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: const RidePrefScreen(), // Original home
+      home: const RidePrefScreen(), 
+      debugShowCheckedModeBanner: false,
     );
   }
 }
